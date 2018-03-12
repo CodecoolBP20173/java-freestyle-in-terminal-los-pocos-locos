@@ -1,22 +1,31 @@
 import com.sun.org.apache.xpath.internal.operations.String;
 
 public class MyClass{
-    public static Boolean WinCheck(String a) {
-        for (i = 0; i< GameBoard.length; i++);
+    public static Boolean WinCheck(String a, String[][] board) {
+        
+    }
+    
+    public static Boolean horizontalCheck(String a, String[][] board) {
 
-            for (j = 0; j < GameBoard[i].length; j++);
-                if (GameBoard[i][j] == a) {
-                    return true;
-                }
-    }     
+    }
+
+    public static Boolean verticalCheck(String a, String[][] board) {
+
+    }
+
+    public static Boolean diagonalDownwardslCheck(String a, String[][] board) {
+
+    }
+    
+    public static Boolean DiagonalUpwardsCheck(String a, String[][] board) {
+
+    }
 
     public static void main(String[] args) {
-        private static String[][] GameBoard = new String[][]{
+        String[][] GameBoard = new String[][]{
             {"_","_","_"},
             {"_","_","_"},
             {"_","_","_"}
-        };
-
-                   
+        };         
     }
 }
