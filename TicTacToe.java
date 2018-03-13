@@ -17,6 +17,9 @@ public class TicTacToe {
     public static void main(String[] args) {
         String[][] board = generateBoard(3);
         term.printField(board);
+        String mynumb = userInput("x");
+        int[] kecske = decisionIndexChanger(mynumb, board.length);
+        move("x", kecske, board);
     }
 
     public static Boolean winCheck(String a, String[][] board) {
@@ -106,14 +109,13 @@ public class TicTacToe {
         return array;
     }
 
-    public static Integer userInput(String player) {
+    public static String userInput(String player) {
         Scanner user_input = new Scanner(System.in);
         while (true) {
             try {
                 System.out.println(player + "'s turn:");
-                int number = user_input.nextInt();
+                String number = user_input.next();
                 user_input.close();
-                term.clearScreen();
                 return number;
             } catch (java.util.InputMismatchException e) {
                 term.clearScreen();
@@ -122,5 +124,8 @@ public class TicTacToe {
             }
         }
 
+    }
+    public static void move(String player, int[] coords, String[][] board) {
+        board[coords[0]][coords[1]] = player;
     }
 }
