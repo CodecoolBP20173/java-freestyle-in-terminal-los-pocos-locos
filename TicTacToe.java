@@ -109,7 +109,10 @@ public class TicTacToe {
 			user_input.nextLine();
 			System.out.println("\nYou have entered an invalid coordinate! \nTry again please!\n");
 		}
-	}
+	} 
+    }
+    public static void move(String player, int[] coords, String[][] board) {
+        board[coords[0]][coords[1]] = player;
 
     }
 }
