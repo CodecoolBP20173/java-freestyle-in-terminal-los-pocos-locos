@@ -13,7 +13,7 @@ public class TicTacToe {
     public static Terminal term = new Terminal();
 
     public static void main(String[] args) {
-        String[][] board = new String[][] { { "-", "-", "-" , "x"}, { "-", "-", "x" , "-"},{ "-", "-", "-" , "-"},{ "x", "-", "-" ,"-"} };
+        String[][] board = new String[][] { { "-", "-", "-" }, { "-", "-", "x" },{ "-", "-", "-" }};
         term.printField(board);
         Boolean win = diagonalUpwardsCheck("x", board);
         System.out.println(win);
