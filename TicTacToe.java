@@ -18,7 +18,7 @@ public class TicTacToe {
         System.out.println(win);
     }
 
-    public static Boolean WinCheck(String a, String[][] board) {
+    public static Boolean winCheck(String a, String[][] board) {
         return false;
     }
 
@@ -59,7 +59,7 @@ public class TicTacToe {
         }
     }
 
-    public static Boolean DiagonalUpwardsCheck(String a, String[][] board) {
+    public static Boolean diagonalUpwardsCheck(String a, String[][] board) {
         String lastItem = a;
         int matchCount = 0;
         for (int i = board.length-1; i >= 0; i--) {
@@ -78,7 +78,11 @@ public class TicTacToe {
         }
     }
 
-    public static void UserInput(String player) {
+    public static void generateBoard(int size) {
+
+    }
+
+    public static void userInput(String player) {
         Scanner user_input = new Scanner(System.in);
         System.out.println("Which array: ");
         int array = user_input.nextInt();        
