@@ -20,11 +20,20 @@ public class TicTacToe {
     }
 
     public static Boolean horizontalCheck(String a, String[][] board) {
-        return false;
+        for (i = 0; i < board.length; i++) {
+            if (board[i][0] == a && board[i][1] == a && board[i][2] == a) {
+                return true;
+            }
+        }
     }
 
     public static Boolean verticalCheck(String a, String[][] board) {
-        return false;
+        for (i = 0; i < board.length; i++) {
+            if (board[0][i] == a && board[1][i] == a && board[2][i] == a) {
+                return true;
+            }
+        }
+
     }
 
     public static Boolean diagonalDownwardslCheck(String a, String[][] board) {
