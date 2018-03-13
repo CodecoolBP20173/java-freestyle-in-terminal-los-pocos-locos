@@ -125,6 +125,5 @@ public class TicTacToe {
     }
     public static void move(String player, int[] coords, String[][] board) {
         board[coords[0]][coords[1]] = player;
-
     }
 }
