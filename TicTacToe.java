@@ -90,13 +90,20 @@ public class TicTacToe {
         return board;
     }
 
-    public static void userInput(String player) {
+    public static Integer userInput(String player) {
         Scanner user_input = new Scanner(System.in);
-        System.out.println("Which array: ");
-        int array = user_input.nextInt();
-        System.out.println("Which element: ");
-        int element = user_input.nextInt();
-        user_input.close();
+	while (true){
+		try {
+        		System.out.println(player + "'s turn:");
+        		int number = user_input.nextInt();        
+        		user_input.close();
+			    return number;
+		}
+		catch (java.util.InputMismatchException e){
+			user_input.nextLine();
+			System.out.println("\nYou have entered an invalid coordinate! \nTry again please!\n");
+		}
+	}
 
     }
 }
