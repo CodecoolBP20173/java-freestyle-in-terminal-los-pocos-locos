@@ -63,4 +63,13 @@ public class TicTacToe {
         return false;
     }
 
+    public static void UserInput(String player) {
+        Scanner user_input = new Scanner(System.in);
+        System.out.println("Which array: ");
+        int array = user_input.nextInt();        
+        System.out.println("Which element: ");
+        int element = user_input.nextInt();
+        user_input.close();
+
+    }
 }
