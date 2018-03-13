@@ -10,12 +10,14 @@ import java.util.Scanner;
 
 public class TicTacToe {
 
+    public static Terminal term = new Terminal();
+
     public static void main(String[] args) {
         String[][] board = new String[][] { { "-", "-", "-" , "x"}, { "-", "-", "x" , "-"},{ "-", "-", "-" , "-"},{ "x", "-", "-" ,"-"} };
-        Terminal term = new Terminal();
         term.printField(board);
-        Boolean win = DiagonalUpwardsCheck("x", board);
+        Boolean win = diagonalUpwardsCheck("x", board);
         System.out.println(win);
+        userInput("player");
     }
 
     public static Boolean winCheck(String a, String[][] board) {
@@ -76,9 +78,9 @@ public class TicTacToe {
     public static Boolean diagonalUpwardsCheck(String a, String[][] board) {
         String lastItem = a;
         int matchCount = 0;
-        for (int i = board.length-1; i >= 0; i--) {
+        for (int i = board.length - 1; i >= 0; i--) {
             for (int j = 0; j < board.length; j++) {
-                if (i+j == board.length-1) {
+                if (i + j == board.length - 1) {
                     if (lastItem == board[i][j]) {
                         matchCount++;
                     }
@@ -92,8 +94,16 @@ public class TicTacToe {
         }
     }
 
-    public static void generateBoard(int size) {
-
+    public static String[][] generateBoard(int size) {
+        String[][] board = new String[size][size];
+        int tileCount = 1;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                board[i][j] = Integer.toString(tileCount);
+                tileCount++;
+            }
+        }
+        return board;
     }
 
     public static Integer userInput(String player) {
@@ -102,11 +112,13 @@ public class TicTacToe {
 		try {
         		System.out.println(player + "'s turn:");
         		int number = user_input.nextInt();        
-        		user_input.close();
+                user_input.close();
+                term.clearScreen();
 			    return number;
 		}
 		catch (java.util.InputMismatchException e){
-			user_input.nextLine();
+            term.clearScreen();
+            user_input.nextLine();
 			System.out.println("\nYou have entered an invalid coordinate! \nTry again please!\n");
 		}
 	} 
