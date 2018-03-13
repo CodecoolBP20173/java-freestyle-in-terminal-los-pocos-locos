@@ -10,7 +10,8 @@ import TerminalManipulation.src.com.codecool.termlib.Direction;
 public class TicTacToe {
 
     public static void main(String[] args) {
-        String[][] board = new String[][] { { "-", "-", "-" , "-"}, { "-", "-", "-" , "-"},{ "-", "-", "-" , "-"},{ "-", "-", "-" ,"-"} };
+        String[][] board = new String[][] { { "-", "-", "-", "-" }, { "-", "-", "-", "-" }, { "-", "-", "-", "-" },
+                { "-", "-", "-", "-" } };
         Terminal term = new Terminal();
         term.printField(board);
     }
@@ -62,11 +63,18 @@ public class TicTacToe {
 
     public static void UserInput(String player) {
         Scanner user_input = new Scanner(System.in);
-        System.out.println("Which array: ");
-        int array = user_input.nextInt();        
-        System.out.println("Which element: ");
-        int element = user_input.nextInt();
-        user_input.close();
+	while (true){
+		try {
+        		System.out.println("Which array: ");
+        		int number = user_input.nextInt();        
+        		user_input.close();
+			break;
+		}
+		catch (java.util.InputMismatchException e){
+			user_input.nextLine();
+			System.out.println("\nYou have entered an invalid coordinate! \nTry again please!\n");
+		}
+	}
 
     }
 }
