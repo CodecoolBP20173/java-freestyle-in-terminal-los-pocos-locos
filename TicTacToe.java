@@ -11,12 +11,7 @@ import java.util.Scanner;
 public class TicTacToe {
 
     public static void main(String[] args) {
-<<<<<<< HEAD
-        String[][] board = new String[][] { { "-", "-", "-", "-" }, { "-", "-", "-", "-" }, { "-", "-", "-", "-" },
-                { "-", "-", "-", "-" } };
-=======
         String[][] board = new String[][] { { "-", "-", "-" , "x"}, { "-", "-", "x" , "-"},{ "-", "-", "-" , "-"},{ "x", "-", "-" ,"-"} };
->>>>>>> 1125a7c156598cd526ecf9de998166a2295e0342
         Terminal term = new Terminal();
         term.printField(board);
         Boolean win = DiagonalUpwardsCheck("x", board);
@@ -87,14 +82,14 @@ public class TicTacToe {
 
     }
 
-    public static void userInput(String player) {
+    public static Integer userInput(String player) {
         Scanner user_input = new Scanner(System.in);
 	while (true){
 		try {
-        		System.out.println("Which array: ");
+        		System.out.println(player + "'s turn:");
         		int number = user_input.nextInt();        
         		user_input.close();
-			break;
+			    return number;
 		}
 		catch (java.util.InputMismatchException e){
 			user_input.nextLine();
