@@ -4,6 +4,8 @@ import TerminalManipulation.src.com.codecool.termlib.Terminal;
 import TerminalManipulation.src.com.codecool.termlib.Color;
 import TerminalManipulation.src.com.codecool.termlib.Attribute;
 import TerminalManipulation.src.com.codecool.termlib.Direction;
+
+import java.util.Arrays;
 import java.util.Scanner;
 //import com.sun.org.apache.regexp.internal.recompile;
 //import com.sun.org.apache.xpath.internal.operations.String;
@@ -13,11 +15,8 @@ public class TicTacToe {
     public static Terminal term = new Terminal();
 
     public static void main(String[] args) {
-        String[][] board = new String[][] { { "-", "-", "-" }, { "-", "-", "x" },{ "-", "-", "-" }};
+        String[][] board = generateBoard(3);
         term.printField(board);
-        Boolean win = diagonalUpwardsCheck("x", board);
-        System.out.println(win);
-        userInput("player");
     }
 
     public static Boolean winCheck(String a, String[][] board) {
@@ -25,32 +24,18 @@ public class TicTacToe {
     }
 
     public static Boolean horizontalCheck(String a, String[][] board) {
-        
         for (int i = 0; i < board.length; i++) {
-            int WinCounter = 0;
-            for (int j = 0; j < board.length; j++) {
-                if (board[i][j] == a) {
-                    WinCounter++;
-                }
-            }if (WinCounter == 3){
+            if (board[i][0] == a && board[i][1] == a && board[i][2] == a) {
                 return true;
             }
-            
         }
         return false;
     }
 
     public static Boolean verticalCheck(String a, String[][] board) {
         for (int i = 0; i < board.length; i++) {
-            int WinCounter = 0;
-            for (int j = 0; j < board.length; j++){
-                if (board[j][i] == a){
-                    WinCounter++;
-                }
-            if (WinCounter == 3){
+            if (board[0][i] == a && board[1][i] == a && board[2][i] == a) {
                 return true;
-                }
-
             }
         }
         return false;
@@ -106,24 +91,36 @@ public class TicTacToe {
         return board;
     }
 
+    public static int[] decisionIndexChanger(String decision, int boardsize ) {
+        int decisionInt = Integer.parseInt(decision);
+        int rowIndex = decisionInt / boardsize;
+        int tempColumnIndex = decisionInt % boardsize;
+        int columnIndex;
+        if (tempColumnIndex == 0) {
+            columnIndex = boardsize-1;
+            rowIndex--;
+        } else {
+            columnIndex = (decisionInt % boardsize)-1;
+        }
+        int[] array = new int[]{rowIndex,columnIndex};
+        return array;
+    }
+
     public static Integer userInput(String player) {
         Scanner user_input = new Scanner(System.in);
-	while (true){
-		try {
-        		System.out.println(player + "'s turn:");
-        		int number = user_input.nextInt();        
+        while (true) {
+            try {
+                System.out.println(player + "'s turn:");
+                int number = user_input.nextInt();
                 user_input.close();
                 term.clearScreen();
-			    return number;
-		}
-		catch (java.util.InputMismatchException e){
-            term.clearScreen();
-            user_input.nextLine();
-			System.out.println("\nYou have entered an invalid coordinate! \nTry again please!\n");
-		}
-	} 
-    }
-    public static void move(String player, int[] coords, String[][] board) {
-        board[coords[0]][coords[1]] = player;
+                return number;
+            } catch (java.util.InputMismatchException e) {
+                term.clearScreen();
+                user_input.nextLine();
+                System.out.println("\nYou have entered an invalid coordinate! \nTry again please!\n");
+            }
+        }
+
     }
 }
