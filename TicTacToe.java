@@ -11,10 +11,10 @@ import java.util.Scanner;
 public class TicTacToe {
 
     public static void main(String[] args) {
-        String[][] board = new String[][] { { "-", "-", "-" , "x"}, { "-", "-", "x" , "-"},{ "-", "-", "-" , "-"},{ "x", "-", "-" ,"-"} };
+        String[][] board = generateBoard(3);
         Terminal term = new Terminal();
         term.printField(board);
-        Boolean win = DiagonalUpwardsCheck("x", board);
+        Boolean win = diagonalUpwardsCheck("x", board);
         System.out.println(win);
     }
 
@@ -62,9 +62,9 @@ public class TicTacToe {
     public static Boolean diagonalUpwardsCheck(String a, String[][] board) {
         String lastItem = a;
         int matchCount = 0;
-        for (int i = board.length-1; i >= 0; i--) {
+        for (int i = board.length - 1; i >= 0; i--) {
             for (int j = 0; j < board.length; j++) {
-                if (i+j == board.length-1) {
+                if (i + j == board.length - 1) {
                     if (lastItem == board[i][j]) {
                         matchCount++;
                     }
@@ -78,14 +78,22 @@ public class TicTacToe {
         }
     }
 
-    public static void generateBoard(int size) {
-
+    public static String[][] generateBoard(int size) {
+        String[][] board = new String[size][size];
+        int tileCount = 1;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                board[i][j] = Integer.toString(tileCount);
+                tileCount++;
+            }
+        }
+        return board;
     }
 
     public static void userInput(String player) {
         Scanner user_input = new Scanner(System.in);
         System.out.println("Which array: ");
-        int array = user_input.nextInt();        
+        int array = user_input.nextInt();
         System.out.println("Which element: ");
         int element = user_input.nextInt();
         user_input.close();
