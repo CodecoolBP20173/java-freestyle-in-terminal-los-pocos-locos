@@ -19,7 +19,7 @@ public class TicTacToe {
         Scanner user_input = new Scanner(System.in);
         String[][] board = generateBoard(3);
         term.clearScreen();
-        term.printField(board);
+        term.printField(board);  
         while (true) {
             String mynumb = userInput(user_input, "x");
             int[] kecske = decisionIndexChanger(mynumb, board.length);
@@ -37,8 +37,8 @@ public class TicTacToe {
             if (winCheck("o", board)){
                 break;
             }
-        }
-        user_input.close();
+        } 
+        user_input.close();    
     }
 
     public static Boolean winCheck(String a, String[][] board) {
