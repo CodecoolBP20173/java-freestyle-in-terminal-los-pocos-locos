@@ -16,6 +16,7 @@ public class TicTacToe {
     public static Terminal term = new Terminal();
 
     public static void main(String[] args) {
+        term.resetStyle();
         Scanner user_input = new Scanner(System.in);
         int[][] positions = new int[10][2];
         term.clearScreen();
@@ -37,6 +38,7 @@ public class TicTacToe {
             }
         }
         user_input.close();
+        System.out.print("Winner Winner Chicken Dinner\n");
     }
 
     public static Boolean winCheck(String a) {
@@ -129,16 +131,16 @@ public class TicTacToe {
     public static Integer userInput(Scanner user_input, String player) {
         while (true) {
             try {
-                System.out.print("\033[1;37m");
+                System.out.print("\033[8;1H\033[K");
                 System.out.print(player + "'s turn:");
                 Integer number = user_input.nextInt();
                 if (!validMove(player, number)) {
+                    System.out.print("\033[1D\033[0J");
                     continue;
                 }
                 return number;
-            } catch (java.util.InputMismatchException e) {
+            } catch (java.lang.ArrayIndexOutOfBoundsException | java.util.NoSuchElementException e) {
                 user_input.nextLine();
-                System.out.print("\nYou have entered an invalid coordinate! \nTry again please!\n");
             }
         }
 
