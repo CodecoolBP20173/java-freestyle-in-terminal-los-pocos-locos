@@ -65,8 +65,7 @@ public class TicTacToe {
         return false;
     }
 
-    public static Boolean diagonalDownwardslCheck(String a, String[][] board) {
-        String lastItem = a;
+    public static Boolean diagonalDownwardslCheck(String lastItem, String[][] board) {
         int matchCount = 0;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board.length; j++) {
@@ -84,8 +83,7 @@ public class TicTacToe {
         }
     }
 
-    public static Boolean diagonalUpwardsCheck(String a, String[][] board) {
-        String lastItem = a;
+    public static Boolean diagonalUpwardsCheck(String lastItem, String[][] board) {
         int matchCount = 0;
         for (int i = board.length - 1; i >= 0; i--) {
             for (int j = 0; j < board.length; j++) {
