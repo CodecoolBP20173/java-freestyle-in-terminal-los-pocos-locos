@@ -18,27 +18,26 @@ public class TicTacToe {
     public static void main(String[] args) {
         Scanner user_input = new Scanner(System.in);
         String[][] board = generateBoard(3);
+        int[][] positions = new int[10][2];
         term.clearScreen();
-        term.printField(board);  
+        term.printField(board, positions); 
         while (true) {
             String mynumb = userInput(user_input, "x");
-            int[] kecske = decisionIndexChanger(mynumb, board.length);
-            move("x", kecske, board);
-            term.clearScreen();
-            term.printField(board);
+            int[] indexArray = decisionIndexChanger(mynumb, board.length);
+            move("x", indexArray, board);
+            term.moveToAndPrint(2, 3, "x");
             if (winCheck("x", board)){
                 break;
             }
             mynumb = userInput(user_input, "o");
-            kecske = decisionIndexChanger(mynumb, board.length);
-            move("o", kecske, board);
-            term.clearScreen();
-            term.printField(board);
+            indexArray = decisionIndexChanger(mynumb, board.length);
+            move("o", indexArray, board);
+            term.moveToAndPrint(4, 3, "y");
             if (winCheck("o", board)){
                 break;
             }
         } 
-        user_input.close();    
+        user_input.close();   
     }
 
     public static Boolean winCheck(String a, String[][] board) {
@@ -132,12 +131,12 @@ public class TicTacToe {
     public static String userInput(Scanner user_input ,String player) {
         while (true) {
             try {
-                System.out.println(player + "'s turn:");
+                System.out.print(player + "'s turn: ");
                 String number = user_input.next();
                 return number;
             } catch (java.util.InputMismatchException e) {
                 user_input.nextLine();
-                System.out.println("\nYou have entered an invalid coordinate! \nTry again please!\n");
+                System.out.print("\nYou have entered an invalid coordinate! \nTry again please!\n");
             }
         }
 
